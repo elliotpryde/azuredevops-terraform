@@ -15,7 +15,7 @@ Describe "Set-ResourceGroup" {
     }
 
     It "should create a resource group if it doesn't already exist" {
-        Mock "Invoke-Azure" -MockWith {
+        Mock "Invoke-Azure" {
             if ($args -and $args[0] -eq "group" -and $args[1] -eq "exists") {
                 return $false
             }

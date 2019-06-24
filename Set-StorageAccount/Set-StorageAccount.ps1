@@ -1,3 +1,5 @@
+. ".\Invoke-Azure\Invoke-Azure.ps1"
+
 function Set-StorageAccount() {
     Param(
         [Parameter(Mandatory=$true, Position=0)]
