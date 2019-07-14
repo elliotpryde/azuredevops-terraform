@@ -1,7 +1,8 @@
 stages:
   - test
 
-test:set-backendstorage:
+test:powershell-unit-tests:
   stage: test
+  image: mcr.microsoft.com/powershell:latest
   script:
-    - . .\Run-Tests.ps1
+    - ./Run-Tests.ps1
