@@ -1,0 +1,7 @@
+stages:
+  - test
+
+test:set-backendstorage:
+  stage: test
+  script:
+    - . .\runtests.ps1
