@@ -4,4 +4,4 @@ stages:
 test:set-backendstorage:
   stage: test
   script:
-    - . .\runtests.ps1
+    - . .\Run-Tests.ps1
