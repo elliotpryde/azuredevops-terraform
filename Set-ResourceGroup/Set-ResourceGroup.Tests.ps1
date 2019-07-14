@@ -11,7 +11,7 @@ Describe "Set-ResourceGroup" {
 
         Set-ResourceGroup -Name "resource_grp_name"
 
-        Assert-MockCalled Invoke-Azure -Times 0 -Scpoe It -ParameterFilter {$args -and $args[0] -eq "group" -and $args[1] -eq "create"}
+        Assert-MockCalled Invoke-Azure -Times 0 -Scope It -ParameterFilter {$args -and $args[0] -eq "group" -and $args[1] -eq "create"}
     }
 
     It "should create a resource group if it doesn't already exist" {
