@@ -1,6 +1,5 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
-$PSDefaultParameterValues['*:ErrorAction']='Stop'
 
 . ".\Set-ResourceGroup\Set-ResourceGroup.ps1"
 . ".\Set-StorageAccount\Set-StorageAccount.ps1"
@@ -25,7 +24,7 @@ function Set-BackendStorage {
     # Write-Output "Fetching storage account key"
     # $storage_account_keys = Invoke-Azure storage account keys list --account-name $storage_account.name | Out-String | ConvertFrom-Json
     # $storage_account_key = $storage_account_keys[0]
-
+    Write-Host "Ensuring that the Terraform backend storage exists..."
     Set-ResourceGroup -Name $ResourceGroupName
     Set-StorageAccount -Name $StorageAccountName -ResourceGroupName $ResourceGroupName
     Set-StorageContainer -Name $StorageContainerName -StorageAccountName $StorageAccountName
