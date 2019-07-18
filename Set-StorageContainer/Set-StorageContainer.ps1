@@ -1,3 +1,6 @@
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+
 function Set-StorageContainer() {
     Param(
         [Parameter(Mandatory=$true, Position=0)]

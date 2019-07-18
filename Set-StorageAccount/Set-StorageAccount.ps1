@@ -1,3 +1,6 @@
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+
 . ".\Invoke-Azure\Invoke-Azure.ps1"
 
 function Set-StorageAccount() {
@@ -16,6 +19,15 @@ function Set-StorageAccount() {
     } else {
         if ($storage_account_namecheck.reason -eq "AlreadyExists") {
             Write-Output "Storage account already exists"
+            try {
+                Invoke-Azure storage account show --resource-group $ResourceGroupName --name $Name
+            } catch {
+                Write-Error @"
+                Error when accessing the storage account.
+                This is likely caused by your resource storage account name is in-use by someone elses Azure subscription.
+"@
+                throw $_.Exception
+            }
             # Invoke-Azure storage account show --name $Name | Out-String | ConvertFrom-Json
         } else {
             throw "Could not create storage account because: $storage_account_namecheck"

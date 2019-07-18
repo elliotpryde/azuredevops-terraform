@@ -1,3 +1,6 @@
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+
 . ".\Invoke-Azure\Invoke-Azure.ps1"
 
 function Set-ResourceGroup() {
@@ -10,7 +13,7 @@ function Set-ResourceGroup() {
 
     if ($resource_grp_exists -ne $true) {
         Write-Output "Creating resource group..."
-        Invoke-Azure group create --location uksouth --name $Name# | Out-String | ConvertFrom-Json
+        Invoke-Azure group create --location uksouth --name $Name # | Out-String | ConvertFrom-Json
     } else {
         Write-Output "Resource group already exists"
     }
